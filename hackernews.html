@@ -13,25 +13,28 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="HACKER NEWS" />
-	
-
 </head>
 
 <body>
 	<header class="title-content subtle-glow-warble" aria-label="Main navigation">
 		<div class="nav-buttons">
+			<nav id="nav-button-top" class="text-link-button" aria-label="Top Stories" title="Top Stories"><i
+					class="material-icons"> upload </i></nav>
 			<div class="text-link-button-spacer">|</div>
-			<nav id="nav-button-top" class="text-link-button" aria-label="Top Stories" title="Top Stories"><i class="material-icons"> upload </i></nav>
+			<nav id="nav-button-new" class="text-link-button" aria-label="New Stories" title="New Stories"> <i
+					class="material-icons"> new_releases </i> </nav>
 			<div class="text-link-button-spacer">|</div>
-			<nav id="nav-button-new" class="text-link-button" aria-label="New Stories" title="New Stories"> <i class="material-icons"> new_releases </i> </nav>
+			<nav id="nav-button-best" class="text-link-button" aria-label="Best Stories" title="Best Stories"> <i
+					class="material-icons"> star </i> </nav>
 			<div class="text-link-button-spacer">|</div>
-			<nav id="nav-button-best" class="text-link-button" aria-label="Best Stories" title="Best Stories"> <i class="material-icons"> star </i> </nav>
+			<nav id="nav-button-ask" class="text-link-button" aria-label="Ask HN" title="Ask HN"> <i class="material-icons">
+					theater_comedy </i> </nav>
 			<div class="text-link-button-spacer">|</div>
-			<nav id="nav-button-ask" class="text-link-button" aria-label="Ask HN" title="Ask HN"> <i class="material-icons"> theater_comedy </i> </nav>
+			<nav id="nav-button-show" class="text-link-button" aria-label="Show HN" title="Show HN"> <i
+					class="material-icons"> preview</i> </nav>
 			<div class="text-link-button-spacer">|</div>
-			<nav id="nav-button-show" class="text-link-button" aria-label="Show HN" title="Show HN"> <i class="material-icons"> preview</i> </nav>
-			<div class="text-link-button-spacer">|</div>
-			<nav id="nav-button-job" class="text-link-button" aria-label="Jobs" title="Jobs"> <i class="material-icons"> work</i> </nav>
+			<nav id="nav-button-job" class="text-link-button" aria-label="Jobs" title="Jobs"> <i class="material-icons">
+					work</i> </nav>
 			<div class="text-link-button-spacer">|</div>
 		</div>
 	</header>
@@ -215,7 +218,7 @@
 		--size-3xs: 0.436rem;
 		--size-xxs: 0.682rem;
 		--size-xs: 0.818rem;
-		--size-sm: 1rem;
+		--size-sm: 1.2rem;
 		--size-md: 1.618rem;
 		--size-lg: 2.618rem;
 		--size-xl: 4.236rem;
@@ -235,7 +238,7 @@
 		font-weight: normal;
 		text-shadow: var(--text-shadow-mild);
 		text-size-adjust: 100%;
-		line-height: 1.3;
+		line-height: 1.6;
 		box-sizing: border-box;
 	}
 
@@ -311,32 +314,32 @@
 		font-family: "DIN Web Pro";
 		src: url("DINWebPro.woff");
 	}
+
 	.material-icons {
-  color: #7b9dbe;
-  font-family: "Material Icons", sans-serif;
-  font-weight: normal;
-  font-style: normal;
-  font-size: 30px;
-  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  cursor: pointer;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
+		color: #7b9dbe;
+		font-family: "Material Icons", sans-serif;
+		font-weight: normal;
+		font-style: normal;
+		font-size: 30px;
+		/* Preferred icon size */
+		display: inline-block;
+		line-height: 1;
+		text-transform: none;
+		letter-spacing: normal;
+		word-wrap: normal;
+		white-space: nowrap;
+		direction: ltr;
+		cursor: pointer;
+		/* Support for all WebKit browsers. */
+		-webkit-font-smoothing: antialiased;
+		/* Support for Safari and Chrome. */
+		text-rendering: optimizeLegibility;
+		/* Support for Firefox. */
+		-moz-osx-font-smoothing: grayscale;
+		/* Support for IE. */
+		font-feature-settings: "liga";
+	}
 
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: "liga";
-}
 	h1 {
 		font-size: var(--size-md);
 		text-align: center;
@@ -437,7 +440,6 @@
 		font-weight: 400;
 		min-height: var(--size-sm);
 		padding: 0.25rem 0.5rem;
-		box-shadow: 1px 1px 3px var(--color-text-main);
 		border-radius: var(--user-border-radius-button);
 	}
 
@@ -936,7 +938,7 @@
 		background: var(--color-light);
 		align-items: flex-start;
 		padding: var(--size-xs);
-		font-size: var(--size-lg);
+		font-size: var(--size-xs);
 		overflow: unset;
 	}
 
@@ -1533,7 +1535,7 @@ Other message: "${message}""`)
 		return doc.body.innerHTML
 	}
 
-	
+
 
 	/**
 	 * Downloads a JSON object as a file
@@ -2914,31 +2916,31 @@ Other message: "${message}""`)
 	 * @returns {string}
 	 */
 	const MODAL_CLOSE_BUTTON_STRING =
-		"<button id=\"close-button\" class=\"modal-title-button\" title=\"Close Modal\">❌</button>"
+		"<button id=\"close-button\" class=\"modal-title-button\" title=\"Close Modal\"><i class=\"material-icons\"> close</i></button>"
 
 	/**
 	 * Markup for modal maximize button
 	 * @returns {string}
 	 */
 	const MODAL_MAXIMIZE_BUTTON_STRING =
-		"<button id=\"maximize-button\" class=\"modal-title-button\" title=\"Toggle Full Screen\">➕</button>"
+		"<button id=\"maximize-button\" class=\"modal-title-button\" title=\"Toggle Full Screen\"><i class=\"material-icons\"> add</i></button>"
 
 	/**
 	 * Markup for modal open link button
 	 * @returns {string}
 	 */
 	const MODAL_OPEN_LINK_BUTTON_STRING =
-		"<button id=\"open-link-button\" class=\"modal-title-button\" title='Open In New Tab'>⬆️</button>"
+		"<button id=\"open-link-button\" class=\"modal-title-button\" title='Open In New Tab'><i class=\"material-icons\">file_upload</i></button>"
 
 	/**
 	 * Markup for modal share button
 	 * @returns {string}
 	 */
 	const MODAL_SHARE_BUTTON_STRING =
-		"<button id=\"share-button\" class=\"modal-title-button\" title='Share'>📤</button>"
+		"<button id=\"share-button\" class=\"modal-title-button\" title='Share'><i class=\"material-icons\">share</i></button>"
 
 	const MODAL_REFRESH_BUTTON_STRING =
-		"<button id=\"refresh-button\" class=\"modal-title-button\" title='Refresh'>🔄</button>"
+		"<button id=\"refresh-button\" class=\"modal-title-button\" title='Refresh'><i class=\"material-icons\">refresh</i></button>"
 
 
 
@@ -3011,6 +3013,7 @@ Other message: "${message}""`)
 			.querySelector("#close-button")
 			.addEventListener("click", () => {
 				modal.remove()
+				storiesOpen = false
 				if (callback) callback()
 			})
 
@@ -3035,6 +3038,14 @@ Other message: "${message}""`)
 	 * @returns {HTMLElement}
 	 */
 	function ShareModal() {
+		let modalContainer = document.querySelector(".modal-content")
+
+		let iframe = modalContainer.querySelector("iframe")
+
+		let iframeId = iframe ? iframe.id : 'No iframe found'
+		let cleanId = iframeId.split('story-iframe-')[1]
+		let cleanLink = `https://news.ycombinator.com/item?id=${cleanId}`
+		console.log(cleanLink)
 		const modal = document.createElement("div")
 		modal.classList.add(
 			"share-modal",
@@ -3054,6 +3065,7 @@ Other message: "${message}""`)
       </header>
       <main class="modal-content">
         <div class="modal-content-post-share">
+					<a href="${cleanLink}", target ="_blank">${cleanLink}</a>
         </div>
       </main>
       `
@@ -3308,6 +3320,7 @@ Other message: "${message}""`)
 	 * @returns {HTMLElement}
 	 */
 	function LinkModal(url) {
+
 		const modal = document.createElement("div")
 		modal.classList.add(
 			"modal",
@@ -3351,7 +3364,9 @@ Other message: "${message}""`)
 	 * @param {object} story
 	 * @returns {HTMLElement}
 	 */
+	 let storiesOpen = false
 	function StoryModal(story) {
+if (storiesOpen) return
 		const modal = document.createElement("div")
 		modal.classList.add("modal", "use-gpu-rendering", "title-actions-modal")
 
@@ -3369,10 +3384,10 @@ Other message: "${message}""`)
 		${MODAL_OPEN_LINK_BUTTON_STRING}
         ${MODAL_SHARE_BUTTON_STRING}
         ${story.url
-				? "<button id=\"toggle-url-or-post-button\" class=\"modal-title-button\" title=\"Toggle Webpage Preview or Hacker News Post\">🖥️</button>"
+				? "<button id=\"toggle-url-or-post-button\" class=\"modal-title-button\" title=\"Toggle Webpage Preview or Hacker News Post\"><i class=\"material-icons\">preview</i></button>"
 				: ""
-			}
-  
+
+
 			}
 		${MODAL_REFRESH_BUTTON_STRING}
 		</div>
@@ -3516,7 +3531,7 @@ Other message: "${message}""`)
 		document.body.appendChild(modal)
 		addStoryModalToURL(story.id)
 		setModalOnTop(modal)
-
+		storiesOpen = true
 		return modal
 	}
 
@@ -3581,7 +3596,7 @@ Other message: "${message}""`)
 			modal.querySelector("#download-code").disabled = false
 		}
 
-		
+
 
 		document.body.appendChild(modal)
 		setModalOnTop(modal)
@@ -3713,6 +3728,7 @@ Other message: "${message}""`)
 	 * will only load their data as they come into view.
 	 * @returns {void}
 	 */
+
 	function startStoryIntersectionObservers() {
 		const observer = new IntersectionObserver(
 			(entries) => {
@@ -3729,7 +3745,8 @@ Other message: "${message}""`)
 		)
 
 		document.querySelectorAll(".item-title-preview").forEach((story) => {
-			observer.observe(story)
+			storiesOpen & observer.observe(story)
+	
 		})
 	}
 
