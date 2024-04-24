@@ -887,7 +887,13 @@
 		text-align: center;
 		font-size: var(--size-sm);
 	}
-
+	@media screen and (width <=640px) {
+		.modal-title-button {
+			width: var(--size-lg);
+			height: var(--size-lg);
+			margin-left: var(--size-md);
+		}
+		}
 	.modal-title-button:hover {
 		background: var(--color-primary);
 		filter: grayscale(0.1) brightness(1.1);
