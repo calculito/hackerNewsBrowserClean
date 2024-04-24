@@ -339,7 +339,11 @@
 		/* Support for IE. */
 		font-feature-settings: "liga";
 	}
-
+	@media screen and (width <=640px) {
+		.material-icons {
+		font-size: 3rem;
+		}
+	}
 	h1 {
 		font-size: var(--size-md);
 		text-align: center;
@@ -1025,7 +1029,11 @@
 		z-index: 10;
 		box-shadow: var(--bow-shadow-top-level-element);
 	}
-
+	@media screen and (width <=640px) {
+		.title-content {
+			height: var(--size-xl);
+		}
+		}
 	.nav-buttons {
 		display: flex;
 		flex-direction: row;
