@@ -990,7 +990,7 @@
 		padding: var(--size-xs);
 		margin: var(--size-sm) var(--size-xs);
 		border: var(--color-primary) 1px solid;
-		background: var(--color-light);
+		background: var(--color-accent-2);
 		min-width: 10vw;
 		transition: all .5s;
 		animation: fade-in .5s;
@@ -3542,7 +3542,7 @@ if (storiesOpen) return
 
 		// Trigger load of comments tree
 		renderCommentsAsync(story.id, commentsRootElement)
-
+console.log(modal)
 		document.body.appendChild(modal)
 		addStoryModalToURL(story.id)
 		setModalOnTop(modal)
