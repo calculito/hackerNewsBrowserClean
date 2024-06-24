@@ -13,55 +13,6 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="HACKER NEWS" />
-	<style>
-		/* Modal styles */
-		#searchModal {
-			display: none;
-			z-index: 1;
-			left: 0;
-			top: 0;
-			width: 100%;
-		}
-
-		.searchmodal-content {
-			background-color: #fefefe;
-			padding: 8px;
-			border: 1px solid #888;
-			width: 100%;
-		}
-
-		.close {
-			color: #aaa;
-			float: right;
-			font-size: 28px;
-			font-weight: bold;
-		}
-
-		.close:hover,
-		.close:focus {
-			color: black;
-			text-decoration: none;
-			cursor: pointer;
-		}
-
-		.search-container {
-			display: flex;
-			align-items: center;
-		}
-
-		.search-container input {
-			flex: 1;
-			padding: 5px;
-			font-size: 16px;
-		}
-
-		.search-container button {
-			background: none;
-			border: none;
-			cursor: pointer;
-			padding: 5px;
-		}
-	</style>
 </head>
 
 <body>
@@ -76,33 +27,17 @@
 			<nav id="nav-button-best" class="text-link-button" aria-label="Best Stories" title="Best Stories"> <i
 					class="material-icons"> star </i> </nav>
 			<div class="text-link-button-spacer">|</div>
-			<nav id="nav-button-ask" class="text-link-button" aria-label="Ask HN" title="Ask HN"> <i
-					class="material-icons"> theater_comedy </i> </nav>
+			<nav id="nav-button-ask" class="text-link-button" aria-label="Ask HN" title="Ask HN"> <i class="material-icons">
+					theater_comedy </i> </nav>
 			<div class="text-link-button-spacer">|</div>
 			<nav id="nav-button-show" class="text-link-button" aria-label="Show HN" title="Show HN"> <i
 					class="material-icons"> preview</i> </nav>
 			<div class="text-link-button-spacer">|</div>
 			<nav id="nav-button-job" class="text-link-button" aria-label="Jobs" title="Jobs"> <i class="material-icons">
 					work</i> </nav>
-			<div class="text-link-button-spacer">|</div>
-			<nav id="nav-button-search" class="text-link-button" aria-label="Search" title="Search"> <i
-					class="material-icons"> search</i> </nav>
+		
 		</div>
 	</header>
-	<modal id="searchModal">
-		<div class="searchmodal-content">
-			<span class="close" id="closeSearch">&times;</span>
-			<div class="search-container">
-				<input type="text" id="searchInput" placeholder="Enter search term">
-				<button id="searchBtn">
-					<span class="material-icons">search</span>
-				</button>
-				<button id="cleanBtn">
-					<span class="material-icons">delete</span>
-				</button>
-			</div>
-		</div>
-	</modal>
 	<main class="main-content">
 		<section id="loading-outlet" class="use-gpu-rendering stories-loading-animation" style="display: none"
 			aria-live="polite"></section>
@@ -113,6 +48,150 @@
 		<section id="show-outlet" class="use-gpu-rendering" style="display: none" aria-live="polite"></section>
 		<section id="job-outlet" class="use-gpu-rendering" style="display: none" aria-live="polite"></section>
 		<section id="favorites-outlet" class="use-gpu-rendering" style="display: none" aria-live="polite"></section>
+		<section id="settings-outlet" class="use-gpu-rendering" style="display: none" aria-live="polite">
+			<h3>Change Color Settings</h3>
+			<div class="adjust-theme-content" role="table" id="settings-content-container">
+				<div class="setting-element" id="setting--color-primary">
+					<div class="setting-name" role="label">primary</div>
+					<div class="setting-new-value-input">
+						<input type="color" id="setting-input--color-primary" />
+					</div>
+					<button class="setting-apply-button" id="apply-setting--color-primary"> Apply </button>
+					<button class="setting-reset-button" id="reset-setting--color-primary"> Reset </button>
+				</div>
+				<div class="setting-element" id="setting--color-secondary">
+					<div class="setting-name" role="label">secondary</div>
+					<div class="setting-new-value-input">
+						<input type="color" id="setting-input--color-secondary" />
+					</div>
+					<button class="setting-apply-button" id="apply-setting--color-secondary"> Apply </button>
+					<button class="setting-reset-button" id="reset-setting--color-secondary"> Reset </button>
+				</div>
+				<div class="setting-element" id="setting--color-accent-1">
+					<div class="setting-name" role="label">accent-1</div>
+					<div class="setting-new-value-input">
+						<input type="color" id="setting-input--color-accent-1" />
+					</div>
+					<button class="setting-apply-button" id="apply-setting--color-accent-1"> Apply </button>
+					<button class="setting-reset-button" id="reset-setting--color-accent-1"> Reset </button>
+				</div>
+				<div class="setting-element" id="setting--color-accent-2">
+					<div class="setting-name" role="label">accent-2</div>
+					<div class="setting-new-value-input">
+						<input type="color" id="setting-input--color-accent-2" />
+					</div>
+					<button class="setting-apply-button" id="apply-setting--color-accent-2"> Apply </button>
+					<button class="setting-reset-button" id="reset-setting--color-accent-2"> Reset </button>
+				</div>
+				<div class="setting-element" id="setting--color-dark">
+					<div class="setting-name" role="label">dark</div>
+					<div class="setting-new-value-input">
+						<input type="color" id="setting-input--color-dark" />
+					</div>
+					<button class="setting-apply-button" id="apply-setting--color-dark"> Apply </button>
+					<button class="setting-reset-button" id="reset-setting--color-dark"> Reset </button>
+				</div>
+				<div class="setting-element" id="setting--color-light">
+					<div class="setting-name" role="label">light</div>
+					<div class="setting-new-value-input">
+						<input type="color" id="setting-input--color-light" />
+					</div>
+					<button class="setting-apply-button" id="apply-setting--color-light"> Apply </button>
+					<button class="setting-reset-button" id="reset-setting--color-light"> Reset </button>
+				</div>
+				<div class="setting-element" id="setting--color-text-main">
+					<div class="setting-name" role="label">text-main</div>
+					<div class="setting-new-value-input">
+						<input type="color" id="setting-input--color-text-main" />
+					</div>
+					<button class="setting-apply-button" id="apply-setting--color-text-main"> Apply </button>
+					<button class="setting-reset-button" id="reset-setting--color-text-main"> Reset </button>
+				</div>
+				<p id="theme-applied-outlet"></p>
+			</div>
+			<br />
+			<button id="download-theme-button" class="button-large full-width-mobile"> 💾 Download Current Color Theme
+			</button>
+			<br />
+			<br />
+			<br />
+			<br />
+			<h3>Default Color Themes</h3>
+			<div class="setting-buttons-row">
+				<button id="button-theme-default">DEFAULT</button>
+				<button id="button-theme-greyscale">𝔤𝔯𝔢𝔶𝔰𝔠𝔞𝔩𝔢</button>
+				<button id="button-theme-board">Ｂｏａｒｄ</button>
+				<button id="button-theme-y2k">ⓨ²ⓚ</button>
+				<button id="button-theme-fuji">🗻🗻🗻</button>
+				<button id="button-theme-rainbow">✦☾⇢✧⇠☽✦</button>
+				<button id="button-theme-plastic">ℙ𝕝𝕒𝕤𝕥𝕚𝕔</button>
+				<button id="button-theme-dream-pop">DrE∀M P♡P</button>
+				<button id="button-theme-hash">ʜᴀѕн</button>
+				<button id="button-theme-block-cipher">███ɃŁØ₵ƙ₵ᎥƤђɆя███</button>
+				<button id="button-theme-neon-concrete">N3ØN ₵ØN₵RΣTΣ</button>
+				<button id="button-theme-away">✉Away✉</button>
+				<button id="button-theme-solarpunk">S☼LΛRPUNK</button>
+				<button id="button-theme-hyperreality">H¥P3RR34L!TY</button>
+				<button id="button-theme-hippie">Ħłρρłε</button>
+				<button id="button-theme-cybernetic-dream">⊂¥βΞ尺ภΞ†เς Ð尺ΞΛⓜ</button>
+				<button id="button-theme-petal-dream">✿ Pétäl Drëäm ✿</button>
+				<button id="button-theme-neo-tokyo">新しい東京</button>
+				<button id="button-theme-china">中國龍</button>
+				<button id="button-theme-sakura-matsuri">桜ーまつり</button>
+				<button id="button-theme-sao-paulo">🄼🄴🅃🄾́🄿🄾🄻🄸🅂 🄿🄰🅄🄻🄸🅂🅃🄰</button>
+				<button id="button-theme-lagos">ḺᾰǤⱺϨ⸚ 𝔽𝕌𝕋𝕌ℝ𝔸</button>
+				<button id="button-theme-nyc">𝕟𝕪𝕔</button>
+				<button id="button-theme-washington">Ⓦⓐⓢⓗⓘⓝⓖⓣⓞⓝ</button>
+				<button id="button-theme-miami">MⓘⒶMⓘ</button>
+				<button id="button-theme-neo-vegas">𝓝𝓮𝓸 𝓥𝓮𝓰𝓪𝓼</button>
+				<button id="button-theme-moto">ⓜⓞⓣⓞ</button>
+				<button id="button-theme-delhi">नई नई दिल्ली</button>
+				<button id="button-theme-cyber-citrus">ℂ𝕚𝕥𝕣𝕦𝕤</button>
+				<button id="button-theme-noir">∅byssal Noir</button>
+				<button id="button-theme-vaporwave">VAPORWAVE</button>
+				<button id="button-theme-pastel-goth">𝔓𝔞𝔰𝔱𝔢𝔩 𝔊𝔬𝔱𝔥</button>
+				<button id="button-theme-scene">𝚛𝚎𝚜𝚌𝚎𝚗𝚌𝚎</button>
+				<button id="button-theme-sleeze">𝕾𝖑𝖊𝖆𝖟𝖊</button>
+				<button id="button-theme-zine">Z̲̅i̲̅n̲̅e̲̅</button>
+				<button id="button-theme-irc">IRC₍ᴵₙₜₑᵣₙₑₜ ᴿₑₗₐᵧ ₢ₕₐₜ₎</button>
+				<button id="button-theme-bbs">ßßₛ</button>
+				<button id="button-theme-psyc">ᑭѕүᴄʜ</button>
+				<button id="button-theme-1984">¹⁹⁸⁴</button>
+				<button id="button-theme-space">2oo4</button>
+				<button id="button-theme-korea">한국의 빛</button>
+				<button id="button-theme-1999">1999</button>
+				<button id="button-theme-y10k">Y₁₀ₖ</button>
+				<button id="button-theme-space-age">🛸🛸🛸</button>
+				<button id="button-theme-eliptic-curve">ɆⱠł₱₮ł₵ ₵ɄⱤVɆ</button>
+				<button id="button-theme-exit-node">Ξ𝕏ł𝕋 ℕ𝕆𝔻𝔼</button>
+				<button id="button-theme-salmon">ℕ๏ภςє</button>
+				<button id="button-theme-qubit">ҨบᎥƁᎥ†</button>
+				<button id="button-theme-san-francisco">S⍺n Fr⍺ncisc0</button>
+				<button id="button-theme-los-angeles">L0S@NGeLE$</button>
+			</div>
+			<br />
+			<br />
+			<br />
+			<h3>Added Color Themes</h3>
+			<div class="added-themes setting-buttons-row" id="added-themes-outlet"> You have no external themes yet </div>
+			<br />
+			<p> Visit <a href="https://github.com/wkyleg/brutalist-hacker-news/blob/main/themes.md"
+					title="The git repository for this website" data-allow-external="true">this project's Github Repo</a> to add
+				more themes, or to submit your own theme. </p>
+			<br />
+			<div class="setting-buttons-row">
+				<button id="add-new-theme-button" class="button-large full-width-mobile"> + Add New Theme </button>
+				<button id="remove-added-themes-button" class="button-large full-width-mobile" style="display:none;"> 🗑️ Clear
+					Added Themes </button>
+			</div>
+			<br />
+			<br />
+			<br />
+			<button id="share-website" class="button-large full-width-mobile">📤 Share This Website</button>
+			<br />
+			<br />
+			</p>
+		</section>
 	</main>
 </body>
 <style>
@@ -236,10 +315,6 @@
 		src: url("DINWebPro.woff");
 	}
 
-	.text-link-button-selected .material-icons {
-		color: white;
-	}
-
 	.material-icons {
 		color: #7b9dbe;
 		font-family: "Material Icons", sans-serif;
@@ -264,13 +339,11 @@
 		/* Support for IE. */
 		font-feature-settings: "liga";
 	}
-
 	@media screen and (width <=640px) {
 		.material-icons {
-			font-size: 2.2rem;
+		font-size: 2.2rem;
 		}
 	}
-
 	h1 {
 		font-size: var(--size-md);
 		text-align: center;
@@ -707,10 +780,8 @@
 	}
 
 	.text-link-button-selected {
-		background-color: orange;
-		font-weight: bolder;
-		color: white;
-		border-radius: 0.4rem;
+		color: var(--color-primary);
+		font-weight: bolder
 	}
 
 	.text-link-button:hover {
@@ -816,15 +887,13 @@
 		text-align: center;
 		font-size: var(--size-sm);
 	}
-
 	@media screen and (width <=640px) {
 		.modal-title-button {
 			width: var(--size-lg);
 			height: var(--size-lg);
 			margin-left: var(--size-md);
 		}
-	}
-
+		}
 	.modal-title-button:hover {
 		background: var(--color-primary);
 		filter: grayscale(0.1) brightness(1.1);
@@ -960,18 +1029,17 @@
 		flex-direction: row;
 		justify-content: flex-start;
 		align-items: center;
+		padding-left: var(--top-level-padding-side);
 		background: var(--color-accent-1);
 		width: 100%;
 		z-index: 10;
 		box-shadow: var(--bow-shadow-top-level-element);
 	}
-
 	@media screen and (width <=640px) {
 		.title-content {
 			height: var(--size-xl);
 		}
-	}
-
+		}
 	.nav-buttons {
 		justify-content: space-around;
 		display: flex;
@@ -1246,14 +1314,15 @@
 <!-- Error handling -->
 <script type="text/javascript">
 	/**
-		* Logs an error to the console user support instructions
-		* @param {Error} error
-		* @param {string} message
-		*/
+	 * Logs an error to the console user support instructions
+	 * @param {Error} error
+	 * @param {string} message
+	 */
 	function logError(error = {}, message = "N/A") {
 		console.error(`RUNTIME ERROR
 Error string: "${error.toString()}""
 Error JSON: "${JSON.stringify(error, null, 2)}"
+
 Other message: "${message}""`)
 		console.error(error)
 	}
@@ -1261,11 +1330,11 @@ Other message: "${message}""`)
 <!-- API -->
 <script type="text/javascript">
 	/**
-		* Fetches data from the Hacker News API with loading animation displayed
-		* on main content
-		* @param {string} url
-		* @returns {Promise}
-		*/
+	 * Fetches data from the Hacker News API with loading animation displayed
+	 * on main content
+	 * @param {string} url
+	 * @returns {Promise}
+	 */
 	async function getRequestWithLoadingAnimation(url) {
 		showLoadingAnimation()
 		let response
@@ -1285,33 +1354,33 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Regarding the Hacker News API:
-		* Stories, comments, jobs, Ask HNs and even polls are just items. They're
-		* identified by their ids, which are unique integers, and live under
-		* /v0/item/<id>.
-		*
-		* All items have some of the following properties:
-		* [Field]  [Description]
-		* id	      The item's unique id.
-		* deleted	True if the item is deleted.
-		* type    	The type of item. One of "job", "story", "comment", "poll", or "pollopt".
-		* by	      The username of the item's author.
-		* time	    Creation date of the item, in Unix Time.
-		* text    	The comment, story or poll text. HTML.
-		* dead	    true if the item is dead.
-		* parent  	The comment's parent: either another comment or the relevant story.
-		* poll	    The pollopt's associated poll.
-		* kids	    The ids of the item's comments, in ranked display order.
-		* url     	The URL of the story.
-		* score	  The story's score, or the votes for a pollopt.
-		* title	  The title of the story, poll or job. HTML.
-		* parts	  A list of related pollopts, in display order.
-		*
-		* For example, see: https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty
-		* for an example of a post.
-		* 
-		* See more info about the Hacker News API: https://github.com/HackerNews/API
-		*/
+	 * Regarding the Hacker News API:
+	 * Stories, comments, jobs, Ask HNs and even polls are just items. They're
+	 * identified by their ids, which are unique integers, and live under
+	 * /v0/item/<id>.
+	 *
+	 * All items have some of the following properties:
+	 * [Field]  [Description]
+	 * id	      The item's unique id.
+	 * deleted	True if the item is deleted.
+	 * type    	The type of item. One of "job", "story", "comment", "poll", or "pollopt".
+	 * by	      The username of the item's author.
+	 * time	    Creation date of the item, in Unix Time.
+	 * text    	The comment, story or poll text. HTML.
+	 * dead	    true if the item is dead.
+	 * parent  	The comment's parent: either another comment or the relevant story.
+	 * poll	    The pollopt's associated poll.
+	 * kids	    The ids of the item's comments, in ranked display order.
+	 * url     	The URL of the story.
+	 * score	  The story's score, or the votes for a pollopt.
+	 * title	  The title of the story, poll or job. HTML.
+	 * parts	  A list of related pollopts, in display order.
+	 *
+	 * For example, see: https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty
+	 * for an example of a post.
+	 * 
+	 * See more info about the Hacker News API: https://github.com/HackerNews/API
+	 */
 
 	const API = {
 		topStories: () =>
@@ -1347,12 +1416,12 @@ Other message: "${message}""`)
 	const _$refs = {}
 
 	/**
-		* Returns a reference to a DOM element with caching if it has been accessed
-		* previously. This should only be used for high level elements not expected 
-		* to change or re-render.
-		* @param {string} query
-		* @returns {HTMLElement}
-		*/
+	 * Returns a reference to a DOM element with caching if it has been accessed
+	 * previously. This should only be used for high level elements not expected 
+	 * to change or re-render.
+	 * @param {string} query
+	 * @returns {HTMLElement}
+	 */
 	function $ref(query) {
 		if (query in _$refs) return _$refs[query]
 		const ref = document.querySelector(query)
@@ -1361,11 +1430,11 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Loop utility, does `callback` `times` times
-		* @param {number} times
-		* @param {function} callback
-		* @returns {void}
-		*/
+	 * Loop utility, does `callback` `times` times
+	 * @param {number} times
+	 * @param {function} callback
+	 * @returns {void}
+	 */
 	const loop = (times, callback) => {
 		for (let i = 0; i < times; i++) {
 			callback(i)
@@ -1373,10 +1442,10 @@ Other message: "${message}""`)
 	}
 
 	/*
-		* Standard Date format
-		* @param {number} timePosted as Unix Time in seconds
-		* @returns {string}
-		*/
+	 * Standard Date format
+	 * @param {number} timePosted as Unix Time in seconds
+	 * @returns {string}
+	 */
 	function formatDate(timePosted) {
 		const date = new Date(timePosted * 1000)
 		const year = date.getFullYear()
@@ -1391,10 +1460,10 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Downloads a string as a CSV file
-		* @param {string} str
-		* @returns {void}
-		*/
+	 * Downloads a string as a CSV file
+	 * @param {string} str
+	 * @returns {void}
+	 */
 	function downloadStringAsCSV(str) {
 		const blob = new Blob([str], { type: "text/csv" })
 		const url = URL.createObjectURL(blob)
@@ -1408,26 +1477,26 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Returns a random number between `min` and `max`
-		* @param {number} min
-		* @param {number} max
-		* @returns {number}
-		*/
+	 * Returns a random number between `min` and `max`
+	 * @param {number} min
+	 * @param {number} max
+	 * @returns {number}
+	 */
 	const getRandomNumberBetween = (min, max) =>
 		Math.floor(Math.random() * (max - min + 1) + min)
 
 	/** 
-		* Returns true of in mobile sized screen 
-		* @returns {boolean}
-		*/
+	 * Returns true of in mobile sized screen 
+	 * @returns {boolean}
+	 */
 	const isMobileDevice = () => window.innerWidth < MOBILE_DEVICE_MAX_WIDTH
 
 	/**
-		* Utility for handling state and side effects, listening for changes
-		* @param {any} initialState
-		* @param {function} sideEffect
-		* @returns {object}
-		*/
+	 * Utility for handling state and side effects, listening for changes
+	 * @param {any} initialState
+	 * @param {function} sideEffect
+	 * @returns {object}
+	 */
 	function reactive(initialState, sideEffect) {
 		let state = initialState
 		const current = () => state
@@ -1455,10 +1524,10 @@ Other message: "${message}""`)
 	const _parser = new DOMParser()
 
 	/**
-		* Utility for sanitizing external HTML content for malicious scripts
-		* @param {string} html
-		* @returns {string}
-		*/
+	 * Utility for sanitizing external HTML content for malicious scripts
+	 * @param {string} html
+	 * @returns {string}
+	 */
 	function sanitize(html) {
 		const doc = _parser.parseFromString(html, "text/html")
 
@@ -1484,10 +1553,10 @@ Other message: "${message}""`)
 
 
 	/**
-		* Downloads a JSON object as a file
-		* @param {string} url
-		* @returns {void}
-		*/
+	 * Downloads a JSON object as a file
+	 * @param {string} url
+	 * @returns {void}
+	 */
 	function downloadJSONAsFile(json, filename = "data.json") {
 		const data = JSON.stringify(json, null, 2)
 		const blob = new Blob([data], { type: "application/json" })
@@ -1500,9 +1569,9 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Incept all link click events and make sure they open in a new tab
-		* @returns {void}
-		*/
+	 * Incept all link click events and make sure they open in a new tab
+	 * @returns {void}
+	 */
 	function initLinkClickInterceptBehavior() {
 		document.body.addEventListener("click", function (e) {
 			// Check if the clicked element is a link or inside a link
@@ -1532,32 +1601,32 @@ Other message: "${message}""`)
 <!-- Favorites -->
 <script>
 	/*
-		* Favorites are stored in localStorage as an array of story IDs
-		* Each story ID is a number
-		* @returns {Array<number>}
-		*/
+	 * Favorites are stored in localStorage as an array of story IDs
+	 * Each story ID is a number
+	 * @returns {Array<number>}
+	 */
 	const getFavorites = () =>
 		JSON.parse(localStorage.getItem("favorites")) || []
 
 	/*
-		* Set the favorites in localStorage
-		* @param {Array<number>} favorites
-		* @returns {void}
-		*/
+	 * Set the favorites in localStorage
+	 * @param {Array<number>} favorites
+	 * @returns {void}
+	 */
 	const setFavorites = (favorites) =>
 		localStorage.setItem("favorites", JSON.stringify(favorites))
 
 	/*
-		* Check if a story is favorited
-		* @param {number} storyId
-		* @returns {boolean}
-		*/
+	 * Check if a story is favorited
+	 * @param {number} storyId
+	 * @returns {boolean}
+	 */
 	const isStoryFavorited = (storyId) => getFavorites().includes(storyId)
 
 	/*
-		* Render the favorites from local storage on the DOM
-		* @returns {HTMLElement}
-		*/
+	 * Render the favorites from local storage on the DOM
+	 * @returns {HTMLElement}
+	 */
 	function renderFavorites() {
 		const favoriteStoriesElement =
 			document.querySelector("#favorites-outlet")
@@ -1571,10 +1640,10 @@ Other message: "${message}""`)
 	}
 
 	/*
-		* Favorite a story by ID
-		* @param {number} storyId
-		* @returns {void}
-		*/
+	 * Favorite a story by ID
+	 * @param {number} storyId
+	 * @returns {void}
+	 */
 	function favoriteStory(storyId) {
 		const favorites = getFavorites()
 		if (favorites.includes(storyId)) return
@@ -1584,28 +1653,28 @@ Other message: "${message}""`)
 	}
 
 	/*
-		* Unfavorite a story by ID
-		* @param {number} storyId
-		* @returns {void}
-		*/
+	 * Unfavorite a story by ID
+	 * @param {number} storyId
+	 * @returns {void}
+	 */
 	function unfavoriteStory(storyId) {
 		setFavorites(getFavorites().filter((id) => id !== storyId))
 		renderFavorites()
 	}
 
 	/*
-		* Clear all favorites from local storage
-		* @returns {void}
-		*/
+	 * Clear all favorites from local storage
+	 * @returns {void}
+	 */
 	function clearAllFavorites() {
 		setFavorites([])
 		renderFavorites()
 	}
 
 	/*
-		* Download saved stories as a CSV
-		* @returns {void}
-		*/
+	 * Download saved stories as a CSV
+	 * @returns {void}
+	 */
 	const downloadFavorites = () =>
 		downloadStringAsCSV(
 			getFavorites()
@@ -2134,10 +2203,10 @@ Other message: "${message}""`)
 
 
 	/**
-		* Convert RGBA color string to HEX color string
-		* @param {string} rgba
-		* @returns {string}
-		*/
+	 * Convert RGBA color string to HEX color string
+	 * @param {string} rgba
+	 * @returns {string}
+	 */
 	const convertToHexString = (rgba) => {
 		const [r, g, b, a] = rgba
 			.substring(5, rgba.length - 1)
@@ -2149,31 +2218,31 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Convert color string in HEX <OR> RGBA format to HEX color string
-		* @param {string} string
-		* @returns {string}
-		*/
+	 * Convert color string in HEX <OR> RGBA format to HEX color string
+	 * @param {string} string
+	 * @returns {string}
+	 */
 	const asColorSelectorInputValue = (string) => {
 		if (string.startsWith("#")) return string
 		return convertToHexString(string)
 	}
 
 	/**
-		* Return current value of CSS variable
-		*/
+	 * Return current value of CSS variable
+	 */
 	const getCSSVariable = (variable) =>
 		getComputedStyle(document.documentElement).getPropertyValue(variable)
 
 	/**
-		* Set CSS variable `variable` to `value`
-		*/
+	 * Set CSS variable `variable` to `value`
+	 */
 	const setCSSVariable = (variable, value) =>
 		document.documentElement.style.setProperty(variable, value)
 
 	/**
-		* Load current CSS settings from local storage and apply them to the document
-		* @returns {void}
-		*/
+	 * Load current CSS settings from local storage and apply them to the document
+	 * @returns {void}
+	 */
 	const loadSettingsFromLocalStorage = () => {
 		Object.entries(SETTINGS).forEach(([_, value]) => {
 			const storedValue = localStorage.getItem(value)
@@ -2184,47 +2253,47 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Save setting to local storage
-		* @param {string} setting
-		* @param {string} value
-		* @returns {void}
-		*/
+	 * Save setting to local storage
+	 * @param {string} setting
+	 * @param {string} value
+	 * @returns {void}
+	 */
 	const saveSettingToLocalStorage = (setting, value) => {
 		localStorage.setItem(setting, value)
 	}
 
 	/**
-		* Apply theme setting to document and save preference in local storage
-		*/
+	 * Apply theme setting to document and save preference in local storage
+	 */
 	const changeSetting = (setting, value) => {
 		setCSSVariable(setting, value)
 		saveSettingToLocalStorage(setting, value)
 	}
 
 	/**
-		* Update setting input with current value
-		* @param {string} setting
-		* @returns {void}
-		*/
+	 * Update setting input with current value
+	 * @param {string} setting
+	 * @returns {void}
+	 */
 	const updateColorSettingInputWithCurrentValue = (setting) => {
 		document.querySelector(`#setting-input${setting}`).value =
 			asColorSelectorInputValue(getCSSVariable(setting))
 	}
 
 	/**
-		* Reset setting to default value
-		* @param {string} setting
-		* @returns {void}
-		*/
+	 * Reset setting to default value
+	 * @param {string} setting
+	 * @returns {void}
+	 */
 	const resetColorSetting = (setting) => {
 		changeSetting(setting, themes[getCurrentThemeCode()][setting])
 		updateColorSettingInputWithCurrentValue(setting)
 	}
 
 	/**
-		* Download current color theme as JSON file
-		* @returns {void}
-		*/
+	 * Download current color theme as JSON file
+	 * @returns {void}
+	 */
 	const downloadCurrentColorTheme = () => {
 		const theme = {}
 		Object.entries(SETTINGS).forEach(([_, value]) => {
@@ -2234,9 +2303,9 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Returns the code of currently applied theme
-		* @returns {string}
-		*/
+	 * Returns the code of currently applied theme
+	 * @returns {string}
+	 */
 	const getCurrentThemeCode = () => {
 		const currentThemeCode = localStorage.getItem("currentThemeCode")
 		if (currentThemeCode) return currentThemeCode
@@ -2244,34 +2313,34 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Update current theme code in local storage
-		* @param {string} themeCode
-		* @returns {void}
-		*/
+	 * Update current theme code in local storage
+	 * @param {string} themeCode
+	 * @returns {void}
+	 */
 	const setCurrentThemeCode = (themeCode) => localStorage.setItem("currentThemeCode", themeCode)
 
 	/**
-		* The display name of the currently applied theme
-		* @returns {void}
-		*/
+	 * The display name of the currently applied theme
+	 * @returns {void}
+	 */
 	const getCurrentThemeDisplayName = () => {
 		const currentThemeCode = getCurrentThemeCode()
 		return document.querySelector(`#button-theme-${currentThemeCode}`).innerHTML
 	}
 
 	/**
-		* Render the name of the applied theme to the theming section in settings page
-		* @returns {void}
-		*/
+	 * Render the name of the applied theme to the theming section in settings page
+	 * @returns {void}
+	 */
 	const renderThemeAppliedText = () => {
 		document.querySelector("#theme-applied-outlet").innerHTML = `Current theme: ${getCurrentThemeDisplayName()}`
 		document.querySelector("#theme-applied-outlet").display = "block"
 	}
 
 	/**
-		* Returns all user installed themes
-		* @returns {void}
-		*/
+	 * Returns all user installed themes
+	 * @returns {void}
+	 */
 	const getAddedThemes = () => {
 		const addedThemes = localStorage.getItem("addedThemes")
 		if (addedThemes) {
@@ -2281,10 +2350,10 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Add new theme to user installed themes by saving in local storage
-		* @param {object} theme
-		* @returns {void}
-		*/
+	 * Add new theme to user installed themes by saving in local storage
+	 * @param {object} theme
+	 * @returns {void}
+	 */
 	const addAddedTheme = (theme) => {
 		const addedThemes = getAddedThemes()
 		addedThemes[theme.name] = theme
@@ -2293,9 +2362,9 @@ Other message: "${message}""`)
 
 
 	/**
-		* Renders buttons that allow to apply all user added themes
-		* @returns {void}
-		*/
+	 * Renders buttons that allow to apply all user added themes
+	 * @returns {void}
+	 */
 	function renderAddedThemes() {
 		$ref("#added-themes-outlet").innerHTML = ""
 		const addedThemes = getAddedThemes()
@@ -2328,22 +2397,22 @@ Other message: "${message}""`)
 <!-- Navigation -->
 <script type="text/javascript">
 	/**
-		* Navigation options
-		*/
+	 * Navigation options
+	 */
 	const NAVIGATION_OPTIONS = {
 		TOP: "top",
 		NEW: "new",
 		BEST: "best",
 		ASK: "ask",
 		SHOW: "show",
-		JOB: "job"
+		JOB: "job",
 	}
 
 	/**
-		* Updates the DOM for the selected section
-		* @param {string} option
-		* @returns {void}
-		*/
+	 * Updates the DOM for the selected section
+	 * @param {string} option
+	 * @returns {void}
+	 */
 	function updateDOMForNavigationOption(option) {
 		Object.entries(NAVIGATION_OPTIONS).forEach(([_, value]) => {
 			if (value === option) {
@@ -2359,11 +2428,11 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Sets `modal` on top of other modals with z-index
-		* @param {HTMLElement} modal
-		* @param {boolean} delay
-		* @returns {void}
-		*/
+	 * Sets `modal` on top of other modals with z-index
+	 * @param {HTMLElement} modal
+	 * @param {boolean} delay
+	 * @returns {void}
+	 */
 	function setModalOnTop(modal, delay = true) {
 		const activeModals = Array.from(
 			document.querySelectorAll(".modal")
@@ -2383,19 +2452,18 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Adds modal tiling behavior to modal
-		* @param {HTMLElement} modal
-		* @returns {void}
-		*/
+	 * Adds modal tiling behavior to modal
+	 * @param {HTMLElement} modal
+	 * @returns {void}
+	 */
 	const useModalTilingBehavior = (modal) =>
 		modal.addEventListener("click", () =>
 			setModalOnTop(modal, false)
 		)
 
-
 	/**
-		* Launch modals corresponding to search params in URL
-		*/
+	 * Launch modals corresponding to search params in URL
+	 */
 	function launchModalsFromNavigationParams() {
 		const currentURL = new URL(window.location.href)
 
@@ -2418,10 +2486,10 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Adds story modal to URL search params
-		* @param {number} storyId
-		* @returns {void}
-		*/
+	 * Adds story modal to URL search params
+	 * @param {number} storyId
+	 * @returns {void}
+	 */
 	function addStoryModalToURL(storyId) {
 		const currentURL = new URL(window.location.href)
 		const currentStoryModalIdList =
@@ -2441,10 +2509,10 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Removes story modal from URL search params
-		* @param {number} storyId
-		* @returns {void}
-		*/
+	 * Removes story modal from URL search params
+	 * @param {number} storyId
+	 * @returns {void}
+	 */
 	function removeStoryModalFromURL(storyId) {
 		const currentURL = new URL(window.location.href)
 
@@ -2467,10 +2535,10 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Adds profile modal to URL search params
-		* @param {number} profileId
-		* @returns {void}
-		*/
+	 * Adds profile modal to URL search params
+	 * @param {number} profileId
+	 * @returns {void}
+	 */
 	function addProfileModalToURL(profileId) {
 		const currentURL = new URL(window.location.href)
 		const currentProfileModalIdList =
@@ -2492,10 +2560,10 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Removes profile modal from URL search params
-		* @param {number} profileId
-		* @returns {void}
-		*/
+	 * Removes profile modal from URL search params
+	 * @param {number} profileId
+	 * @returns {void}
+	 */
 	function removeProfileModalFromURL(profileId) {
 		const currentURL = new URL(window.location.href)
 
@@ -2520,12 +2588,11 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Attaches click listeners to navigation buttons
-		* @returns {void}
-		*/
+	 * Attaches click listeners to navigation buttons
+	 * @returns {void}
+	 */
 	function attachNavigationButtonClickListeners() {
 		Object.entries(NAVIGATION_OPTIONS).forEach(([_, value]) => {
-			console.log(value)
 			$ref(`#nav-button-${value}`)
 				.addEventListener("click", () => {
 					navigationState.update(value)
@@ -2534,28 +2601,25 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Trigger initial page render corresponding to navigation state
-		* @returns {void}
-		*/
-
-
+	 * Trigger initial page render corresponding to navigation state
+	 * @returns {void}
+	 */
 	function applyInitialNavigationState() {
 		const currentURL = new URL(window.location.href)
 		const currentPath = currentURL.pathname.split("/").pop()
-		if (currentPath) {
-			if (Object.values(NAVIGATION_OPTIONS).includes(currentPath)) {
-				navigationState.update(currentPath)
-			}
+		if (Object.values(NAVIGATION_OPTIONS).includes(currentPath)) {
+			navigationState.update(currentPath)
 		} else {
 			navigationState.update(NAVIGATION_OPTIONS.TOP)
 		}
 	}
 
 	/**
-		* Apply current navigation state to window history
-		*/
+	 * Apply current navigation state to window history
+	 */
 	function applyCurrentNavigationStateToURL() {
 		const currentURL = new URL(window.location.href)
+		const currentPath = currentURL.pathname.split("/").pop()
 		currentURL.pathname = `/${navigationState.current()}`
 		window.history.pushState({}, "", currentURL)
 	}
@@ -2563,10 +2627,10 @@ Other message: "${message}""`)
 <!-- Animations -->
 <script type="text/javascript">
 	/**
-		* Makes a modal draggable
-		* @param {HTMLElement} element
-		* @returns {void}
-		*/
+	 * Makes a modal draggable
+	 * @param {HTMLElement} element
+	 * @returns {void}
+	 */
 	function useModalDragBehavior(element) {
 		if (isMobileDevice()) {
 			element.style.position = "fixed"
@@ -2699,37 +2763,37 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Scrolls to the top of the page
-		* @returns {void}
-		*/
+	 * Scrolls to the top of the page
+	 * @returns {void}
+	 */
 	function scrollToTop() {
 		$ref("body").scrollIntoView({ behavior: "smooth" })
 	}
 
 	/**
-		* Shows the loading animation
-		* @returns {void}
-		*/
+	 * Shows the loading animation
+	 * @returns {void}
+	 */
 	function showLoadingAnimation() {
 		scrollToTop()
 		$ref("#loading-outlet").style.display = "block"
 	}
 
 	/**
-		* Hides the loading animation
-		* @returns {void}
-		*/
+	 * Hides the loading animation
+	 * @returns {void}
+	 */
 	function hideLoadingAnimation() {
 		scrollToTop()
 		$ref("#loading-outlet").style.display = "none"
 	}
 
 	/**
-		* Generates a random loading string with length `length` from
-		* `ANIMATION_CHARACTERS_STRING` character set.
-		* @param {number} length
-		* @returns {string}
-		*/
+	 * Generates a random loading string with length `length` from
+	 * `ANIMATION_CHARACTERS_STRING` character set.
+	 * @param {number} length
+	 * @returns {string}
+	 */
 	function generateLoadingString(length) {
 		// Use for loop over map for performance
 		let result = ""
@@ -2742,9 +2806,9 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Pre-computes loading strings for the loading animation
-		* @returns {Promise<string[]>}
-		*/
+	 * Pre-computes loading strings for the loading animation
+	 * @returns {Promise<string[]>}
+	 */
 	async function precomputeLoadingStrings() {
 		// Use for loop over map for performance
 		const loadingStrings = []
@@ -2764,17 +2828,17 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Returns a random loading string
-		* @returns {string}
-		*/
+	 * Returns a random loading string
+	 * @returns {string}
+	 */
 	const getRandomLoadingString = () =>
 		loadingStrings[Math.floor(Math.random() * TOTAL_ANIMATION_STRINGS)]
 
 	/**
-		* Initializes the loading animation
-		* @returns {void}
-		* TODO have generic function for batch DOM inserts
-		*/
+	 * Initializes the loading animation
+	 * @returns {void}
+	 * TODO have generic function for batch DOM inserts
+	 */
 	function initializeLoadingAnimation() {
 		const fragment = document.createDocumentFragment()
 		loop(LOADING_ANIMATION_NUMBER_OF_ROWS, (i) =>
@@ -2786,19 +2850,19 @@ Other message: "${message}""`)
 <!-- Custom Elements -->
 <script type="text/javascript">
 	/**
-		* Cache of callbacks to load stories into elements so that they are only
-		* loaded as brought into view.
-		*/
+	 * Cache of callbacks to load stories into elements so that they are only
+	 * loaded as brought into view.
+	 */
 	const storyElementLoadingCallbacks = {}
 
 	/**
-		* Handle sizing of modal according to screen width
-		* @param {HTMLElement} modal
-		* @param {string} height
-		* @param {string} width
-		* @returns {void}
-		* TODO: refactor because these params aren't needed
-		*/
+	 * Handle sizing of modal according to screen width
+	 * @param {HTMLElement} modal
+	 * @param {string} height
+	 * @param {string} width
+	 * @returns {void}
+	 * TODO: refactor because these params aren't needed
+	 */
 	function handleModalSizing(
 		modal,
 		height = undefined,
@@ -2836,10 +2900,10 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Maximize modal to take up the entire screen
-		* @param {HTMLElement} modal
-		* @returns {void}
-		*/
+	 * Maximize modal to take up the entire screen
+	 * @param {HTMLElement} modal
+	 * @returns {void}
+	 */
 	function maximizeModal(modal) {
 		modal.style.height =
 			MODAL_FULL_SIZE_WITH_BORDER_COMPUTATION_HEIGHT
@@ -2850,10 +2914,10 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Return true if a modal takes up over 90% of the screen
-		* @param {HTMLElement} modal
-		* @returns {boolean}
-		*/
+	 * Return true if a modal takes up over 90% of the screen
+	 * @param {HTMLElement} modal
+	 * @returns {boolean}
+	 */
 	function isModalMaximized(modal) {
 		const rect = modal.getBoundingClientRect()
 		return (
@@ -2863,30 +2927,30 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Markup for modal close button
-		* @returns {string}
-		*/
+	 * Markup for modal close button
+	 * @returns {string}
+	 */
 	const MODAL_CLOSE_BUTTON_STRING =
 		"<button id=\"close-button\" class=\"modal-title-button\" title=\"Close Modal\"><i class=\"material-icons\"> close</i></button>"
 
 	/**
-		* Markup for modal maximize button
-		* @returns {string}
-		*/
+	 * Markup for modal maximize button
+	 * @returns {string}
+	 */
 	const MODAL_MAXIMIZE_BUTTON_STRING =
 		"<button id=\"maximize-button\" class=\"modal-title-button\" title=\"Toggle Full Screen\"><i class=\"material-icons\"> add</i></button>"
 
 	/**
-		* Markup for modal open link button
-		* @returns {string}
-		*/
+	 * Markup for modal open link button
+	 * @returns {string}
+	 */
 	const MODAL_OPEN_LINK_BUTTON_STRING =
 		"<button id=\"open-link-button\" class=\"modal-title-button\" title='Open In New Tab'><i class=\"material-icons\">file_upload</i></button>"
 
 	/**
-		* Markup for modal share button
-		* @returns {string}
-		*/
+	 * Markup for modal share button
+	 * @returns {string}
+	 */
 	const MODAL_SHARE_BUTTON_STRING =
 		"<button id=\"share-button\" class=\"modal-title-button\" title='Share'><i class=\"material-icons\">share</i></button>"
 
@@ -2898,10 +2962,10 @@ Other message: "${message}""`)
 	const LOADING_INDICATOR_ELEMENT_STRING = "<span id=\"loading-comments\" class=\"type\"><span>Loading...</span></span>"
 
 	/**
-		* Double tap on modal header to resize
-		* @param {HTMLElement} modal
-		* @returns {void}
-		*/
+	 * Double tap on modal header to resize
+	 * @param {HTMLElement} modal
+	 * @returns {void}
+	 */
 	function useModalHeaderDoubleTapResize(modal) {
 		modal
 			.querySelector(".modal-window-title")
@@ -2933,11 +2997,11 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Toggle between full and default size on click
-		* @param {HTMLElement} modal
-		* @param {function} callback
-		* @returns {void}
-		*/
+	 * Toggle between full and default size on click
+	 * @param {HTMLElement} modal
+	 * @param {function} callback
+	 * @returns {void}
+	 */
 	function useModalHeaderMaximizeButtonBehavior(modal, callback = undefined) {
 		if (!isMobileDevice()) {
 			modal
@@ -2954,11 +3018,11 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Close modal and remove from DOM on click
-		* @param {HTMLElement} modal
-		* @param {function} callback
-		* @returns {void}
-		*/
+	 * Close modal and remove from DOM on click
+	 * @param {HTMLElement} modal
+	 * @param {function} callback
+	 * @returns {void}
+	 */
 	function useModalHeaderCloseButtonBehavior(modal, callback = undefined) {
 		modal
 			.querySelector("#close-button")
@@ -2971,10 +3035,10 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Open Share modal on click
-		* @param {HTMLElement} modal
-		* @returns {void}
-		*/
+	 * Open Share modal on click
+	 * @param {HTMLElement} modal
+	 * @returns {void}
+	 */
 	function useModalHeaderShareButtonBehavior(modal, callback = undefined) {
 		modal
 			.querySelector("#share-button")
@@ -2985,9 +3049,9 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Modal for social sharing
-		* @returns {HTMLElement}
-		*/
+	 * Modal for social sharing
+	 * @returns {HTMLElement}
+	 */
 	function ShareModal() {
 		let modalContainer = document.querySelector(".modal-content")
 
@@ -3042,10 +3106,10 @@ Other message: "${message}""`)
 
 
 	/**
-		* Element for comments on items/stories
-		* @param {object} story
-		* @returns {HTMLElement}
-		*/
+	 * Element for comments on items/stories
+	 * @param {object} story
+	 * @returns {HTMLElement}
+	 */
 	function CommentListElement(item) {
 		const commentContainer = document.createElement("div")
 		commentContainer.id = item.id
@@ -3072,11 +3136,11 @@ Other message: "${message}""`)
 	const userProfileItemCallbacks = {}
 
 	/*
-		* Element for items submitted by a user.
-		* Will render comment items for submitted comments, and story items for submitted stories.
-		* @param {number} itemId
-		* @returns {HTMLElement}
-		*/
+	 * Element for items submitted by a user.
+	 * Will render comment items for submitted comments, and story items for submitted stories.
+	 * @param {number} itemId
+	 * @returns {HTMLElement}
+	 */
 	function UserSubmittedItemElement(itemId) {
 		const storyContainer = document.createElement("div")
 		storyContainer.id = itemId
@@ -3115,11 +3179,11 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Story list element for a Hacker News story/item
-		* @param {number} storyId
-		* @param {boolean} loadContentImmediately
-		* @returns {HTMLElement}
-		*/
+	 * Story list element for a Hacker News story/item
+	 * @param {number} storyId
+	 * @param {boolean} loadContentImmediately
+	 * @returns {HTMLElement}
+	 */
 	function StoryListElement(
 		storyId,
 		loadContentImmediately = false,
@@ -3169,10 +3233,10 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Modal for a Hacker News user and items/stories/comments they have submitted
-		* @param {object} story
-		* @returns {HTMLElement}
-		*/
+	 * Modal for a Hacker News user and items/stories/comments they have submitted
+	 * @param {object} story
+	 * @returns {HTMLElement}
+	 */
 	function UserModal(userId) {
 		const modal = document.createElement("div")
 		modal.classList.add("modal", "title-actions-modal", "use-gpu-rendering")
@@ -3265,11 +3329,11 @@ Other message: "${message}""`)
 
 
 	/**
-		* Modal that shows iframe of a link that a user clicked on in other modal
-		* regarding the link.
-		* @param {string} url
-		* @returns {HTMLElement}
-		*/
+	 * Modal that shows iframe of a link that a user clicked on in other modal
+	 * regarding the link.
+	 * @param {string} url
+	 * @returns {HTMLElement}
+	 */
 	function LinkModal(url) {
 
 		const modal = document.createElement("div")
@@ -3310,14 +3374,14 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Modal that shows iframe of hacker news story and perform other actions
-		* regarding story.
-		* @param {object} story
-		* @returns {HTMLElement}
-		*/
-	let storiesOpen = false
+	 * Modal that shows iframe of hacker news story and perform other actions
+	 * regarding story.
+	 * @param {object} story
+	 * @returns {HTMLElement}
+	 */
+	 let storiesOpen = false
 	function StoryModal(story) {
-		if (storiesOpen) return
+if (storiesOpen) return
 		const modal = document.createElement("div")
 		modal.classList.add("modal", "use-gpu-rendering", "title-actions-modal")
 
@@ -3420,13 +3484,13 @@ Other message: "${message}""`)
 		const commentsRootElement = modal.querySelector(".comments")
 
 		/*
-			* Recursive function to load comments asynchronously
-			* Will load comments for `itemId` and assign to parent element, child
-			* items will render when ready
-			* @param {number} itemId
-			* @param {HTMLElement} parent
-			* @returns {void}
-			*/
+		 * Recursive function to load comments asynchronously
+		 * Will load comments for `itemId` and assign to parent element, child
+		 * items will render when ready
+		 * @param {number} itemId
+		 * @param {HTMLElement} parent
+		 * @returns {void}
+		 */
 		const renderCommentsAsync = async (itemId, parent) => {
 			const currentStory = await API.item(itemId)
 
@@ -3478,7 +3542,7 @@ Other message: "${message}""`)
 
 		// Trigger load of comments tree
 		renderCommentsAsync(story.id, commentsRootElement)
-		console.log(modal)
+console.log(modal)
 		document.body.appendChild(modal)
 		addStoryModalToURL(story.id)
 		setModalOnTop(modal)
@@ -3486,12 +3550,81 @@ Other message: "${message}""`)
 		return modal
 	}
 
+	function AddNewThemeModal() {
+		const modal = document.createElement("div")
+		modal.classList.add("modal", "title-actions-modal", "use-gpu-rendering", "add-theme-modal")
+
+		modal.innerHTML = `<header class="modal-window-title" role="dialog" aria-modal="true">
+		<div class="modal-action-buttons">
+		${MODAL_CLOSE_BUTTON_STRING}
+		</div>
+		<div class="title-actions-modal-title">Add New Theme</div>
+		<div class="spacer"></div>
+		
+	  </header>
+
+	  <main class="modal-content">
+		<div class="add-theme-modal-content">
+		<p>
+			Enter download code from
+			<a href="https://github.com/wkyleg/brutalist-hacker-news/blob/main/themes.md"
+				title="The git repository for this website" data-allow-external="true">
+				themes.md</a>
+		</p>
+		<input id="download-code" type="text" placeholder="Download Code" />
+		
+		<p id="error-outlet" style="display: none;"></p>
+		
+		<button id="add-theme-button" class="button-large">Add Theme</button>
+		</div>
+	  </main>`
+
+		if (isMobileDevice()) {
+			handleModalSizing(modal, "40%", MODAL_FULL_SIZE_WITH_BORDER_COMPUTATION_WIDTH, "30%", "0")
+		} else {
+			handleModalSizing(modal, "50%", "50%")
+		}
+
+		useModalDragBehavior(modal)
+		useModalTilingBehavior(modal)
+		useModalHeaderCloseButtonBehavior(modal)
+
+		const applyError = (error) => {
+			modal.querySelector("#error-outlet").textContent = error
+			modal.querySelector("#error-outlet").style.display = "block"
+		}
+
+		const resetError = () => {
+			modal.querySelector("#error-outlet").textContent = ""
+			modal.querySelector("#error-outlet").style.display = "none"
+		}
+
+		const applyLoadingBehavior = () => {
+			modal.querySelector("#add-theme-button").textContent = "Loading..."
+			modal.querySelector("#add-theme-button").disabled = true
+			modal.querySelector("#download-code").disabled = true
+		}
+
+		const removeLoadingBehavior = () => {
+			modal.querySelector("#add-theme-button").textContent = "Add Theme"
+			modal.querySelector("#add-theme-button").disabled = false
+			modal.querySelector("#download-code").disabled = false
+		}
+
+
+
+		document.body.appendChild(modal)
+		setModalOnTop(modal)
+
+		return modal
+
+	}
 
 	/**
-		* Loading version of normal story element that produces text glitch effect
-		* These are used while top level pages are loading.
-		* @returns {HTMLElement}
-		*/
+	 * Loading version of normal story element that produces text glitch effect
+	 * These are used while top level pages are loading.
+	 * @returns {HTMLElement}
+	 */
 	function LoadingStoryElement() {
 		const loadingContainer = document.createElement("div")
 		loadingContainer.classList.add("item-title-preview")
@@ -3524,8 +3657,8 @@ Other message: "${message}""`)
 </script>
 <script type="text/javascript">
 	/*
-		* Precomputed loading strings
-		*/
+	 * Precomputed loading strings
+	 */
 	let loadingStrings = ["loading..."]
 	// Assign precomputed loading strings to `loadingStrings` when ready
 	precomputeLoadingStrings().then((strings) => {
@@ -3534,11 +3667,11 @@ Other message: "${message}""`)
 
 
 	/**
-		* Renders the page according to current navigation state.
-		* Most of the behavior on the page originates from this function.
-		* @param {string} newState
-		* @returns {void}
-		*/
+	 * Renders the page according to current navigation state.
+	 * Most of the behavior on the page originates from this function.
+	 * @param {string} newState
+	 * @returns {void}
+	 */
 	const onNavigationChange = (newState) => {
 		try {
 			updateDOMForNavigationOption(newState)
@@ -3556,7 +3689,7 @@ Other message: "${message}""`)
 				outlet.appendChild(fragment)
 				startStoryIntersectionObservers()
 			}
-			console.log(newState)
+
 			switch (newState) {
 				case NAVIGATION_OPTIONS.TOP:
 					API.topStories().then(renderStoriesToOutlet)
@@ -3593,23 +3726,23 @@ Other message: "${message}""`)
 	}
 
 	/**
-		* Reactive store for section selected to rended. Will change the section.
-		* This also triggers recomputation of all cascading sections from their own
-		* respective reactive stores.
-		*
-		* @param {string} initialState
-		* @param {function} sideEffect
-		*/
+	 * Reactive store for section selected to rended. Will change the section.
+	 * This also triggers recomputation of all cascading sections from their own
+	 * respective reactive stores.
+	 *
+	 * @param {string} initialState
+	 * @param {function} sideEffect
+	 */
 	const navigationState = reactive(
 		NAVIGATION_OPTIONS.TOP,
 		onNavigationChange
 	)
 
 	/**
-		* Starts intersection observers for story elements in view. These stories
-		* will only load their data as they come into view.
-		* @returns {void}
-		*/
+	 * Starts intersection observers for story elements in view. These stories
+	 * will only load their data as they come into view.
+	 * @returns {void}
+	 */
 
 	function startStoryIntersectionObservers() {
 		const observer = new IntersectionObserver(
@@ -3628,57 +3761,15 @@ Other message: "${message}""`)
 
 		document.querySelectorAll(".item-title-preview").forEach((story) => {
 			storiesOpen & observer.observe(story)
-
+	
 		})
 	}
-	function filterRows(searchTerm) {
-		const stories = document.querySelectorAll('.item-title-preview')
-		stories.forEach(story => {
-			const title = story.textContent.toLowerCase()
-			if (title.includes(searchTerm.toLowerCase())) {
-				story.style.display = 'block'
-			} else {
-				story.style.display = 'none'
-			}
-		})
-	}
-	function readyToSearch() {
-		const searchModal = document.getElementById('searchModal')
-		const showSearch = document.getElementById('nav-button-search')
-		const closeSearch = document.getElementById('closeSearch')
-		if (showSearch) {
-			showSearch.addEventListener('click', () => {
-				searchModal.style.display = "block"
-			})
-		} else {
-			console.error('Element with id "nav-button-search" not found')
-		}
 
-		closeSearch.onclick = function () {
-			searchModal.style.display = "none"
-		}
-		window.onclick = function (event) {
-			console.log(event.target)
-			if (event.target == modal) {
-				searchModal.style.display = "none"
-			}
-		}
-		searchBtn.onclick = function () {
-			const searchTerm = searchInput.value
-			filterRows(searchTerm)
-			searchModal.style.display = "none" // Optionally close the modal after search
-		}
-		cleanBtn.onclick = function () {
-			searchInput.value = ''
-			searchBtn.click()
-		}
-	}
 	/**
-		* Launches root logic of page
-		* @returns {void}
-		*/
+	 * Launches root logic of page
+	 * @returns {void}
+	 */
 	async function main() {
-		readyToSearch()
 		initializeLoadingAnimation()
 		attachNavigationButtonClickListeners()
 		loadSettingsFromLocalStorage()
@@ -3686,13 +3777,11 @@ Other message: "${message}""`)
 		launchModalsFromNavigationParams()
 		initLinkClickInterceptBehavior()
 		applyInitialNavigationState()
-		readyToSearch()
 	}
 
 	// Call main when other data loaded
 	document.onreadystatechange = () => {
 		if (document.readyState === "complete") main()
-
 	};
 </script>
 
